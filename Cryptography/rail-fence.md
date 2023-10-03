@@ -8,52 +8,12 @@ Put the decoded message in the picoCTF flag format, picoCTF{decoded_message}.
 ## Download message
 Ta _7N6DDDhlg:W3D_H3C31N__0D3ef sHR053F38N43D0F i33___NA
 
-## Enumeration
-In the rail fence cipher, the plaintext is written downwards diagonally on successive rails of an imaginary fence, then moving up when the bottom rail is reached, down again when the top rail is reached and so on until the whole plaintext is written out.
-For example, to encrypt the message 'WE ARE DISCOVERED. RUN AT ONCE.' With 3 "rails," write the text as:
+rails 4
 
-W . . . E . . . C . . . R . . . U . . . O . . . 
-. E . R . D . S . O . E . E . R . N . T . N . E 
-. . A . . . I . . . V . . . D . . . A . . . C . 
-
-
-python script encrypt
-```
-message = "WE ARE DISCOVERED. RUN AT ONCE."
-
-rail1 = ""
-rail2 = ""
-rail3 = ""
-rail4 = ""
-
-rail = 1
-position = 0
-direction = 0 
-
-for char in message:
-    if char.isalpha():
-        if direction == 0: 
-            position += 1
-            if position == 3:
-                direction = 1
-        else:
-            position -= 1
-            if position == 1:
-                direction = 0
-        print(position, "and", char)
-
-        if position == 1:
-            rail1 += char
-        elif position == 2:
-            rail2 += char
-        elif position == 3:
-            rail3 += char
-        elif position == 4:
-            rail4 += char
-
-print(rail1, rail2, rail3)
+## Solution
+Find a Rail Fence Decipher tool online, and set the rails to 4. 
+https://www.boxentriq.com/code-breaking/rail-fence-cipher
+![image](https://github.com/Shawn-Nichol/PicoCTF/assets/30714313/d500fd38-a3b6-48be-8248-0dc7da9082be)
 
 
-WECRUO ERDSOEERNTNE AIVDAC
-```
-## Flag
+Answer: picoCTF{WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_D00AFDD3}
